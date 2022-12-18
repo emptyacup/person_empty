@@ -9,7 +9,7 @@
     <fix-foote></fix-foote>
   </div>
 </template>
-
+// hover
 <script>
 import mainAside from '@/components/mainAside.vue'
 import mainHeader from '@/components/mainHeader.vue'
