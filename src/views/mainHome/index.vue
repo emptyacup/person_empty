@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import mainSearch from "@/components/mainSearch.vue"
-import mainContext from "@/components/mainContext.vue"
-import mainFooter from "@/components/mainFooter.vue"
+import mainSearch from "@/views/mainHome/mainSearch/index.vue"
+import mainContext from "@/views/mainHome/mainContext/index.vue"
+import mainFooter from "@/views/mainHome/mainFooter/index.vue"
 
 export default {
   name: 'mainHome',

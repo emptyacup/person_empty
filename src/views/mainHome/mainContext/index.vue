@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import titleSwip from './titleSwip.vue'
+import titleSwip from '@/basicComponents/titleSwip'
 export default {
   name: 'mainContext',
   props: {},
@@ -291,6 +291,7 @@ export default {
   overflow: hidden;
   // 杯子介绍
   .work-item {
+    display: none;
     .context-header-text {
       display: flex;
       color: var(--font-color);
@@ -534,6 +535,9 @@ export default {
   }
 }
 @media screen and (min-width: 1400px) {
+  .main-context .work-item{
+    display: block;
+  }
   .context-header-item-items {
     li {
       flex: calc(100% / 6);
