@@ -1,5 +1,5 @@
 <template>
-  <div class="tooltip-container" :style="{ display: display }">
+  <div class="toolTip-container" :style="{ display: display }">
     <transition>
       <div
         ref="tipContainer"
@@ -12,7 +12,7 @@
           tabindex: tabindex,
           padding: padding,
         }"
-        class="tip-tooltip-container"
+        class="tip-toolTip-container"
         :class="{ [`position-${placement}`]: true }"
         @mouseleave="mouseleave"
         @mouseenter="mouseenter"
@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: 'tooltip',
+  name: 'toolTip',
   props: {
     trigger: {
       //触发方式
@@ -103,7 +103,7 @@ export default {
     //   document.removeChild(this.$refs.tipContainer)
     // }
     // 删除所有创造的元素
-    var tip = [...document.getElementsByClassName('tip-tooltip-container')]
+    var tip = [...document.getElementsByClassName('tip-toolTip-container')]
     if (tip.length > 0) {
       for (let i = 0; i < tip.length; i++) {
         tip[i].remove()
@@ -194,11 +194,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tooltip-container {
+.toolTip-container {
   position: relative;
   display: inline;
 }
-.tip-tooltip-container {
+.tip-toolTip-container {
   position: absolute;
   word-break: break-all;
   font-size: 12px;
