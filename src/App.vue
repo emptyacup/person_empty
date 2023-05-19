@@ -41,6 +41,7 @@ export default {
 </script>
 
 <style lang="less">
+@import url('./styles/layout.less');
 :root {
   --header-color: #fff;
   --main-color: #f9f9f9;

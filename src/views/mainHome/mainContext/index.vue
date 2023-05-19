@@ -44,7 +44,7 @@
           :key="item.id"
           class="context-main-item-item media-item2"
         >
-          <a :href="item.weblink" target="_blank" class="context-main-img"
+          <a  @click="handleImgSHow(item.weblink)" class="context-main-img"
             ><img :src="item.weblink" :alt="item.name"
           /></a>
           <div class="context-main-item-text">
@@ -80,17 +80,22 @@
         </li>
       </ul>
     </div>
+    <showPageImg v-model="dialogVisible" :url="dialogImageUrl" />
+
   </div>
 </template>
 
 <script>
+import showPageImg from '@/components/showPageImg/index.vue'
 import titleSwip from '@/basicComponents/titleSwip'
 export default {
   name: 'mainContext',
   props: {},
-  components: { titleSwip },
+  components: { titleSwip,showPageImg },
   data() {
     return {
+      dialogVisible:false,
+      dialogImageUrl:null,
       progress: [
         {
           url: 'https://github.com/emptyacup',
@@ -138,7 +143,7 @@ export default {
         value:1
         },
          {
-          name:'爬取内容',
+          name:'不知道放什么',
           value:2
           }],
       production: [
@@ -212,11 +217,11 @@ export default {
         value:'1'
         },
          {
-          name:'分享链接000',
+          name:'不知道放什么',
           value:'2'
           },
          {
-          name:'分享链接000',
+          name:'不知道放什么',
           value:'3'
           },
           ],
@@ -268,6 +273,11 @@ export default {
         name: 'mainForm',
       })
     },
+    // 图片展示
+    handleImgSHow(url){
+      this.dialogImageUrl = url
+      this.dialogVisible=true
+    }
   },
 }
 </script>
