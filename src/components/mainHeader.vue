@@ -57,10 +57,10 @@ export default {
       isClose: true,
       icon: "bx-right-indent  bx-fade-right-hover",
       img: {
-        dark: "http://png.eot.ooo/i/2022/09/10/631c20dea2089.png",
-        sun: "http://png.eot.ooo/i/2022/05/01/626e55bd40508.png",
+        dark: require('@/asset/webtent/黑杯.png'),
+        sun: require('@/asset/webtent/杯.png'),
       },
-      srcImg: "http://png.eot.ooo/i/2022/05/01/626e55bd40508.png",
+      srcImg: require('@/asset/webtent/杯.png'),
     };
   },
   methods: {

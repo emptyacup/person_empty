@@ -1,6 +1,6 @@
 <template>
   <div class="main-context">
-    <div class="work-item">
+    <!-- <div class="work-item">
       <div class="context-header-text">
         <i class="bx bx-ghost bx-sm"></i>
         <h4>空杯介绍</h4>
@@ -9,9 +9,8 @@
         <a @click="aboutMe">关于我</a>
         <a @click="portfolio">作品集</a>
         <a @click="fillForm">填写表单</a>
-        <!-- <img src="@/asset/3.png" alt=""> -->
       </div>
-    </div>
+    </div> -->
     <div class="context-header-item" id="item-1">
       <div class="context-header-text">
         <i class="bx bx-paper-plane bx-sm"></i>
@@ -105,7 +104,7 @@ export default {
           url: 'https://emptyacup.GitHub.io',
           id: '870',
           name: '空杯的个人主页',
-          img: 'http://png.eot.ooo/i/2022/09/10/631c2f28e5a3c.png',
+          img: require('@/asset/webtent/猫与鱼.png'),
           title: '（开发中）期待ing-',
           data: '（开发中）期待ing-',
         },
@@ -113,7 +112,7 @@ export default {
           url: 'https://space.bilibili.com/76799667?spm_id_from=333.1007.0.0',
           id: '432',
           name: '空杯的B站',
-          img: 'http://png.eot.ooo/i/2022/05/01/626e5007393ea.png',
+          img: require('@/asset/webtent/20211201202710227.png'),
           title: '闲来没事',
           data: '闲来没事',
         },
@@ -121,7 +120,7 @@ export default {
           url: 'https://weread.qq.com',
           id: '433',
           name: '微信读书',
-          img: 'http://png.eot.ooo/i/2022/05/02/626f6d3ed82c0.png',
+          img: require('@/asset/webtent/8856b84a37f46a963b08569a9f7aa425.png'),
           title: '四处看看',
           data: '腾讯笔下的良心网站',
         },
@@ -129,7 +128,7 @@ export default {
           url: 'https://space.bilibili.com/38377165/?spm_id_from=333.999.0.0',
           id: '434',
           name: '白雁同学的bilibili日常',
-          img: 'http://png.eot.ooo/i/2022/05/01/626e4ffe28c5f.jpg',
+          img: require('@/asset/webtent/白银同学.jpg'),
           title: '一个立志于up主的小青年',
           data: '一个立志于up主的小青年',
         },
@@ -144,70 +143,63 @@ export default {
           }],
       production: [
         {
-          weblink: 'http://png.eot.ooo/i/2022/05/01/626e4df87b04e.jpg',
+          weblink: require('@/asset/productLayout/盆栽办公椅.jpg'),
           id: '010',
           name: 'POTTED-chair',
           data: '一款绿色的办公椅',
           scale: '5x7',
         },
         {
-          weblink: 'http://png.eot.ooo/i/2022/07/07/62c6ea3cee43f.jpg',
+          weblink: require('@/asset/productLayout/icemaker版面.jpg'),
           id: '011',
           name: 'ICEMAKDER',
           data: '夏日便携式制冰机',
           scale: '5x7',
         },
         {
-          weblink: 'http://png.eot.ooo/i/2022/07/07/62c6ea3c7df32.jpg',
+          weblink: require('@/asset/productLayout/省赛版面2(2).jpg'),
           id: '012',
           name: 'ICEMAKDER_mini',
           data: '夏日便携式制冰机',
           scale: '5x2',
         },
         {
-          weblink: 'http://png.eot.ooo/i/2022/07/07/62c6ea36e9f94.jpg',
+          weblink: require('@/asset/productLayout/头盔2.0.jpg'),
           id: '013',
           name: 'MULTI-SCENE helmet',
           data: '多场景智能扫码头盔',
           scale: '5x7',
         },
         {
-          weblink: 'http://png.eot.ooo/i/2022/07/07/62c6ea396ec72.jpg',
+          weblink: require('@/asset/productLayout/横板头盔3.0.jpg'),
           id: '014',
           name: 'EPIDMIC-hemmet',
           data: '疫情应急检测头盔',
           scale: '5x2',
         },
         {
-          weblink: 'http://png.eot.ooo/i/2022/07/07/62c6ea3caea7c.jpg',
+          weblink: require('@/asset/productLayout/版面(3).jpg'),
           id: '015',
           name: 'PANICNIG-fan',
           data: '“我好方”便携式小型风扇',
           scale: '5x2',
         },
         {
-          weblink: 'http://png.eot.ooo/i/2022/05/01/626e4e4d4f8d7.jpg',
+          weblink: require('@/asset/productLayout/窗花窗花扇.jpg'),
           id: '016',
           name: 'FLOWER-fan',
           data: '一款与剪纸相结合的手握式风扇',
           scale: '5x2',
         },
         {
-          weblink: 'http://png.eot.ooo/i/2022/05/02/626f5e39f4016.jpg',
-          id: '017',
-          name: 'LUNCH-BOX',
-          data: '投影香氛一体化投影仪',
-          scale: '5x7',
-        },
-        {
-          weblink: 'http://png.eot.ooo/i/2022/05/02/626f5e2ebbeb3.jpg',
+          weblink: require('@/asset/productLayout/双风扇.jpg'),
           id: '018',
           name: 'SHOULDER-fan',
           data: '多功能可穿戴式小型风扇',
           scale: '5x2',
         },
         {
-          weblink: 'http://png.eot.ooo/i/2022/05/01/626e4e4c98a6b.jpg',
+          weblink: require('@/asset/productLayout/qier.jpg'),
           id: '019',
           name: 'PENGUIN-cup',
           data: '有关于企鹅主题的保温杯壶',

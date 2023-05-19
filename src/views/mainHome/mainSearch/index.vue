@@ -2,19 +2,14 @@
   <div class="main-search">
     <div class="main-contarn-search">
       <div class="search-text">
-        <label for="type-bing1"><span>常用</span></label>
-        <label for="type-bing2"><span>搜索</span></label>
-        <label for="type-bing3"><span>社区</span></label>
+        <label for="type-bing1"  v-for="item ,index in searchList" :key="index" :class="{activeLabel:index===searchIndex}"><span @click="changeSearch(index)">{{ item.name }}</span></label>
       </div>
       <div class="search-entry">
-        <input type="text" placeholder="欢迎来到这里" />
-        <a><i class="bx bx-search bx-md"></i></a>
+        <input type="text" placeholder="欢迎来到这里" v-model="searchText" @keyup.enter="handleBlank" />
+        <a @click="handleBlank"><i class="bx bx-search bx-md"></i></a>
       </div>
       <div class="search-text">
-        <label for="type-zhannel"><span>站内</span></label>
-        <label for="type-zhanne2"><span>Google</span></label>
-        <label for="type-zhanne3"><span>Bing</span></label>
-        <label for="type-zhanne4"><span>哔哩哔哩</span></label>
+        <label for="type-zhannel"  v-for="item ,index in searchList[searchIndex].children" :key="index" :class="{activeLabel:index===searchTextIndex}"><span  @click="changeSearchText(index)">{{ item.name }}</span></label>
       </div>
     </div>
     <div class="main-search-text">
@@ -30,6 +25,73 @@
 export default {
   name: "mainSearch",
   props: {},
+  data(){
+    return{
+      searchList:[
+        {
+          name:'常用',
+          children:[
+            {
+              name:'站内',
+              link:'https://www.bing.com/search?q='
+            },
+            {
+              name:'Bing',
+              link:'https://www.bing.com/search?q='
+            },
+            {
+              name:'Google',
+              link:'https://www.google.com.hk/search?q='
+            },
+            {
+              name:'哔哩哔哩',
+              link:'https://search.bilibili.com/all?keyword='
+            },
+          ]
+        },
+        {
+          name:'搜索',
+          children:[
+            {
+              name:'开发者搜索',
+              link:'https://kaifa.baidu.com/searchPage?wd='
+            },
+            {
+              name:'稀金社区',
+              link:'https://juejin.cn/search?query='
+            },
+            {
+              name:'git社区',
+              link:'https://github.com/search?q='
+            },
+            {
+              name:'腾讯开发文档',
+              link:'https://developers.weixin.qq.com/doc/search.html?query='
+            },
+          ]
+        },
+      ],
+      searchText:'',
+      searchIndex:0,
+      searchTextIndex:0,
+    }
+  },
+  methods:{
+    changeSearch(index){
+      if( this.searchIndex !== index){
+        this.searchTextIndex = 0
+      }
+      this.searchIndex = index
+    },
+    changeSearchText(index){
+      this.searchTextIndex = index
+
+    },
+    handleBlank(){
+      let text = this.searchList[this.searchIndex].children[this.searchTextIndex].link + this.searchText
+      window.open(text,'blank')
+    }
+  }
 };
 </script>
 
@@ -55,17 +117,21 @@ export default {
       align-items: center;
       display: flex;
       label {
+        cursor: pointer;
         display: flex;
         height: 100%;
-        width: 70px;
         opacity: 0.6;
         font-weight: 500;
         span {
           margin: auto;
+          padding: 0 10px;
         }
         &:hover {
           opacity: 1;
         }
+      }
+      .activeLabel{
+        opacity: 1;
       }
     }
     .search-entry {

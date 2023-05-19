@@ -12,14 +12,14 @@
         <div class="footer-item2" style="flex: 0.42%; padding: 0px 15px">
           <div class="text-link">
             <a href="">新标签页</a>
-            <a href="">过于本站</a>
+            <a href="">关于本站</a>
             <a href="">我就看看</a>
           </div>
           <div class="cycle-link">
             <a>
               <div class="tooltip">
                 <img
-                  src="http://png.eot.ooo/i/2022/05/01/626e50048fcdf.png"
+                  :src="require('@/asset/webtent/1651232008132_temp_qrcode_share_9993.png')"
                   alt="QQ"
                 />
               </div>
@@ -28,7 +28,7 @@
             <a>
               <div class="tooltip">
                 <img
-                  src="http://png.eot.ooo/i/2022/09/08/6319d329de720.png"
+                :src="require('@/asset/webtent/11.png')"
                   alt="微信"
                 />
               </div>
@@ -55,7 +55,7 @@
         <div class="footer-item3" style="flex: 0.25%; padding: 0px 15px">
           <div class="img1">
             <img
-              src="http://png.eot.ooo/i/2022/09/08/6319d329de720.png"
+            :src="require('@/asset/webtent/11.png')"
               alt=""
             />
             <p>联系本站</p>
@@ -84,10 +84,10 @@ export default {
     data(){
     return{
       img:{
-        dark:"http://png.eot.ooo/i/2022/09/10/631c20dea2089.png",
-        sun:"http://png.eot.ooo/i/2022/05/01/626e55bd40508.png"
+        dark:require('@/asset/webtent/黑杯.png'),
+        sun:require('@/asset/webtent/杯.png')
       },
-      srcImg:"http://png.eot.ooo/i/2022/05/01/626e55bd40508.png"
+      srcImg:require('@/asset/webtent/杯.png')
     }
   },
   mounted() {

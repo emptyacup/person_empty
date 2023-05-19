@@ -3,7 +3,7 @@
     <a @click="changeSun"><i class="bx bxs-sun" :class="icon"></i></a>
     <a><i class="bx bx-search-alt"></i></a>
     <a><i class="bx bx-bookmark-heart"></i></a>
-    <a><i class="bx bxs-chevrons-up"></i></a>
+    <a @click="backTop"><i class="bx bxs-chevrons-up"></i></a>
   </div>
 </template>
 
@@ -23,7 +23,10 @@ export default {
       // this.$store.state.isSun=sun
       this.$bus.$emit('cSun',sun)
       sun ? this.icon = "bxs-sun" :this.icon="bxs-moon"
-    }
+    },
+    backTop(){
+      this.$utils.backTop()
+    } 
   }
 };
 </script>

@@ -21,6 +21,9 @@ import {
 } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+// utils
+import utils from './utils/index.js'
+
 Vue.use(Select)
 Vue.use(Radio)
 Vue.use(RadioGroup)
@@ -38,6 +41,8 @@ Vue.config.productionTip = false
 
 Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
+Vue.prototype.$utils = utils
+
 
 new Vue({
   render: (h) => h(App),

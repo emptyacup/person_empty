@@ -1,5 +1,5 @@
 <template>
-  <div class="all" :class="isDark">
+  <div id="all" :class="isDark">
     <main-aside></main-aside>
     <div class="main" :class="isClose">
       <main-header></main-header>
@@ -91,6 +91,13 @@ body {
     Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
   transition: var(--tran-03);
   // 滑块总
+}
+#all {
+  background-color: var(--main-color);
+  transition: var(--tran-05);
+  // min-height: 100vh;
+  height: 100vh;
+  overflow: scroll;
   &::-webkit-scrollbar {
     width: 5px;
     border-radius: 2px;
@@ -105,11 +112,6 @@ body {
   &::-webkit-scrollbar-track {
     border-radius: 10px;
   }
-}
-.all {
-  background-color: var(--main-color);
-  transition: var(--tran-05);
-  min-height: 100vh;
 }
 .main {
   margin-left: 220px;
