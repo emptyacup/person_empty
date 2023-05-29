@@ -57,10 +57,10 @@ export default {
       isClose: true,
       icon: "bx-right-indent  bx-fade-right-hover",
       img: {
-        dark: require('@/asset/webtent/黑杯.png'),
-        sun: require('@/asset/webtent/杯.png'),
+        dark: process.env.VUE_APP_BACK_URL+'/webtent/黑杯.png',
+        sun: process.env.VUE_APP_BACK_URL+'/webtent/杯.png',
       },
-      srcImg: require('@/asset/webtent/杯.png'),
+      srcImg: process.env.VUE_APP_BACK_URL+'/webtent/杯.png',
     };
   },
   methods: {

@@ -19,7 +19,7 @@
             <a>
               <div class="tooltip">
                 <img
-                  :src="require('@/asset/webtent/1651232008132_temp_qrcode_share_9993.png')"
+                  :src="path+'/webtent/1651232008132_temp_qrcode_share_9993.png'"
                   alt="QQ"
                 />
               </div>
@@ -28,7 +28,7 @@
             <a>
               <div class="tooltip">
                 <img
-                :src="require('@/asset/webtent/11.png')"
+                :src="path+'/webtent/11.png'"
                   alt="微信"
                 />
               </div>
@@ -55,7 +55,7 @@
         <div class="footer-item3" style="flex: 0.25%; padding: 0px 15px">
           <div class="img1">
             <img
-            :src="require('@/asset/webtent/11.png')"
+            :src="path+'/webtent/11.png'"
               alt=""
             />
             <p>联系本站</p>
@@ -84,10 +84,11 @@ export default {
     data(){
     return{
       img:{
-        dark:require('@/asset/webtent/黑杯.png'),
-        sun:require('@/asset/webtent/杯.png')
+        dark:process.env.VUE_APP_BACK_URL+'/webtent/黑杯.png',
+        sun:process.env.VUE_APP_BACK_URL+'/webtent/杯.png'
       },
-      srcImg:require('@/asset/webtent/杯.png')
+      srcImg:process.env.VUE_APP_BACK_URL+'/webtent/杯.png',
+      path:process.env.VUE_APP_BACK_URL
     }
   },
   mounted() {

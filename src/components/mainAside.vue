@@ -111,11 +111,11 @@ export default {
   data() {
     return {
       img: {
-        cat: require('@/asset/webtent/图层1.png'),
-        dark: require('@/asset/webtent/黑杯.png'),
-        sun: require('@/asset/webtent/杯.png'),
+        cat: process.env.VUE_APP_BACK_URL+'/webtent/图层1.png',
+        dark: process.env.VUE_APP_BACK_URL+'/webtent/黑杯.png',
+        sun: process.env.VUE_APP_BACK_URL+'/webtent/杯.png',
       },
-      srcImg: require('@/asset/webtent/图层1.png'),
+      srcImg: process.env.VUE_APP_BACK_URL+'/webtent/图层1.png',
       isClose: 'close',
       closing: true,
       suning: true,

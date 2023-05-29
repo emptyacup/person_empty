@@ -60,7 +60,7 @@
           alt=""
         />
         <div class="text">空的杯子</div>
-        <img class="img2" src="@/asset/3.png" alt="" />
+        <img class="img2" :src="path+'/3.png'" alt="" />
       </div>
     </div>
   </div>
@@ -72,6 +72,7 @@ export default {
   data() {
     return {
       isSun: true,
+      path:process.env.VUE_APP_BACK_URL
     }
   },
   mounted() {

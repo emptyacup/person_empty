@@ -5,7 +5,7 @@
       <img :src="url" alt="" />
     </div>
     <div class="close" @click="closeTop"
-      ><img src="@/asset/webtent/关闭.png" alt=""
+      ><img :src="path+'/webtent/关闭.png'" alt=""
     /></div>
   </div>
   </div>
@@ -23,6 +23,7 @@ export default {
       type: Number,
       default: 400,
     },
+    path:process.env.VUE_APP_BACK_URL
   },
   watch: {
     value(n) {

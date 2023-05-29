@@ -260,7 +260,7 @@ export default {
         box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.5);
         min-height: 300px;
         background: var(--header-color);
-        background-image: url('@/asset/envelope.png');
+        background-image: url('https://empty-cup-1311629255.cos.ap-nanjing.myqcloud.com/emptycup/envelope.png');
         background-position: top;
         background-position-y: -10px;
         background-repeat: no-repeat;
