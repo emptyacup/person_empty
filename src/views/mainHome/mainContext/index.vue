@@ -137,6 +137,14 @@ export default {
           title: '一个立志于up主的小青年',
           data: '一个立志于up主的小青年',
         },
+        {
+          url: 'http://www.songcuture.top',
+          id: '435',
+          name: '宋韵文化科普网页',
+          img: process.env.VUE_APP_BACK_URL+'/webtent/soncuture.png',
+          title: '一个基于宋韵文化的科普作品',
+          data: '一个基于宋韵文化的科普作品',
+        },
       ],
       productionTitle: [{
         name:'产品版面',
