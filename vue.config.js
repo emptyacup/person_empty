@@ -6,7 +6,7 @@ module.exports = defineConfig({
   devServer: {
     // 可以局域网连接
     // host: '0.0.0.0',
-    open: true,
+    // open: true,
     proxy: {
     
       '/admin': {

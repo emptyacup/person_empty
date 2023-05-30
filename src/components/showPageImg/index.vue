@@ -23,7 +23,6 @@ export default {
       type: Number,
       default: 400,
     },
-    path:process.env.VUE_APP_BACK_URL
   },
   watch: {
     value(n) {
@@ -33,6 +32,8 @@ export default {
   data() {
     return {
       show: false,
+      path:process.env.VUE_APP_BACK_URL,
+
     }
   },
   methods: {

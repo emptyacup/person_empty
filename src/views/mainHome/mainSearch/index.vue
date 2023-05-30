@@ -131,7 +131,15 @@ export default {
         }
       }
       .activeLabel{
+        // box-shadow:inset 0px 0px 10px #333333;
+        border-radius: 10px;
+        // border-top: ;
+        background: var(--header-color);
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1) ;
         opacity: 1;
+        // background: red;
+        position: relative;
+        
       }
     }
     .search-entry {
@@ -139,6 +147,7 @@ export default {
       max-width: 800px;
       height: 50px;
       position: relative;
+      z-index: 3;
       input {
         width: 100%;
         height: 100%;
