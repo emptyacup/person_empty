@@ -5,90 +5,15 @@
     </div>
     <div class="contarn">
       <div class="contarn-flex">
-        <div class="flex-item">
-          <a
-            href="/#item-1"
-            alt="持续更新"
-            @click="changeChildMenu('menuItem1')"
-          >
-            <i
-              class="bx bx-paper-plane bx-sm"
-              style="position: relative; margin: 0px 8px"
-            ></i>
-            <p>持续进步</p>
-            <div class="close-list">
-              <div class="close-item menu-first">持续进步</div>
-            </div>
-          </a>
-          <i class="bx bx-chevron-right bx-sm icon-right"></i>
-          <ul v-if="!closing && childmenu.menuItem1"></ul>
-        </div>
-        <div class="flex-item">
-          <a
-            href="/#item-2"
-            alt="持续更新"
-            @click="changeChildMenu('menuItem2')"
-          >
-            <i
-              class="bx bx-fingerprint bx-sm"
-              style="position: relative; margin: 0px 8px"
-            ></i>
-            <p>空杯原创</p>
-            <div class="close-list">
-              <div class="close-item menu-first">空杯原创</div>
-              <ul>
-                <li class="close-item menu"><a href="">产品版面</a></li>
-                <li class="close-item menu"><a href="">爬取内容</a></li>
-              </ul>
-            </div>
-          </a>
-          <i class="bx bx-chevron-right bx-sm icon-right"></i>
-          <ul v-if="!closing && childmenu.menuItem2">
-            <li>
-              <a style="height: 40px; margin-left: 36px; line-height: 40px">
-                <span style="height: 40px; margin-left: 10px">产品版面</span>
-              </a>
-            </li>
-            <li>
-              <a style="height: 40px; margin-left: 36px; line-height: 40px">
-                <span style="height: 40px; margin-left: 10px">爬取内容</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="flex-item">
-          <a
-            href="/#item-3"
-            alt="持续更新"
-            @click="changeChildMenu('menuItem3')"
-          >
-            <i
-              class="bx bx-share-alt bx-sm"
-              style="position: relative; margin: 0px 8px"
-            ></i>
-            <p>空杯分享</p>
-            <div class="close-list">
-              <div class="close-item menu-first">空杯分享</div>
-              <ul>
-                <li class="close-item menu"><a href="">电子书籍</a></li>
-                <li class="close-item menu"><a href="">模板素材</a></li>
-              </ul>
-            </div>
-          </a>
-          <i class="bx bx-chevron-right bx-sm icon-right"></i>
-          <ul v-if="!closing && childmenu.menuItem3">
-            <li>
-              <a style="height: 40px; margin-left: 36px; line-height: 40px">
-                <span style="height: 40px; margin-left: 10px">电子书籍</span>
-              </a>
-            </li>
-            <li>
-              <a style="height: 40px; margin-left: 36px; line-height: 40px">
-                <span style="height: 40px; margin-left: 10px">模板素材</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+        <menuItem
+          :closing="closing"
+          v-for="(item, index) in menuList"
+          :key="index"
+          :title="item.name"
+          :icon="item.icon"
+          :children="item.children"
+          :id="item.id"
+        ></menuItem>
       </div>
     </div>
     <div class="foo">
@@ -106,24 +31,43 @@
 </template>
 
 <script>
+import menuItem from './menuItem.vue'
 export default {
   name: 'mainAside',
+  components: { menuItem },
   data() {
     return {
       img: {
-        cat: process.env.VUE_APP_BACK_URL+'/webtent/图层1.png',
-        dark: process.env.VUE_APP_BACK_URL+'/webtent/黑杯.png',
-        sun: process.env.VUE_APP_BACK_URL+'/webtent/杯.png',
+        cat: process.env.VUE_APP_BACK_URL + '/webtent/图层1.png',
+        dark: process.env.VUE_APP_BACK_URL + '/webtent/黑杯.png',
+        sun: process.env.VUE_APP_BACK_URL + '/webtent/杯.png',
       },
-      srcImg: process.env.VUE_APP_BACK_URL+'/webtent/图层1.png',
+      srcImg: process.env.VUE_APP_BACK_URL + '/webtent/图层1.png',
       isClose: 'close',
       closing: true,
       suning: true,
-      childmenu: {
-        menuItem1: false,
-        menuItem2: false,
-        menuItem3: false,
-      },
+      menuList: [
+        { name: '持续进步', icon: 'bx-paper-plane', id: 'progress' },
+        {
+          name: '空杯原创',
+          icon: 'bx-fingerprint',
+          id: 'product',
+          children: [
+            { name: '产品版面', value: 1 },
+            { name: '前端内容', value: 2 },
+          ],
+        },
+        {
+          name: '空杯分享',
+          icon: 'bx-share-alt',
+          id: 'share',
+          children: [
+            { name: '电子书籍', value: 1 },
+            { name: '不知道放什么', value: 2 },
+            { name: '不知道放什么', value: 3 },
+          ],
+        },
+      ],
     }
   },
   mounted() {

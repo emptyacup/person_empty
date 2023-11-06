@@ -5,7 +5,7 @@
         class="swip"
         v-for="(item, index) in list"
         :key="index"
-        :style="{width:item.len+'px'}"
+        :style="{ width: item.len + 'px' }"
         :class="{ active: swipIndex === index }"
         @mouseover="swipBtn(index)"
         @mouseout="swipBtn(temporaryIndex)"
@@ -13,63 +13,78 @@
       >
         <span>{{ item.name }}</span>
       </li>
-      <li class="context-text-btn" :style="{ transform: `translateY(-50%) translateX(${handleBtn}px)`,width:btnWidth }"></li>
+      <li
+        class="context-text-btn"
+        :style="{
+          transform: `translateY(-50%) translateX(${handleBtn}px)`,
+          width: btnWidth,
+        }"
+      ></li>
     </div>
   </div>
 </template>
 
 <script>
-const unciod =val=>{ return val.replace(/[\u0391-\uFFE5]/g,"aa").length*8+26}
+const unciod = (val) => {
+  return val.replace(/[\u0391-\uFFE5]/g, 'aa').length * 8 + 26
+}
 export default {
   name: 'titleSwip',
-  props: ['context'],
+  props: ['context', 'value'],
   data() {
     return {
       swipIndex: 0,
       temporaryIndex: 0,
-      list:null,
-      handleBtn:0,
+      list: null,
+      handleBtn: 0,
     }
   },
-  watch:{
-    context:{
-      deep:true,
-      immediate:true,
-      handler(){
+  watch: {
+    context: {
+      deep: true,
+      immediate: true,
+      handler() {
         this.init()
-      }
-    }
+      },
+    },
+    value(val, oldVal) {
+      if (val === oldVal) return
+      this.swipIndex = val
+    },
+    swipIndex(val) {
+      this.$emit('update', val)
+    },
   },
-  computed:{
-    btnWidth(){
-      return this.list[this.swipIndex].len+'px'
-    }
+  computed: {
+    btnWidth() {
+      return this.list[this.swipIndex].len + 'px'
+    },
   },
-  mounted(){
+  mounted() {
     this.init()
   },
   methods: {
-    init(){
-    this.list=this.context.slice(0)
-    for(let i=0;i<this.list.length;i++){
-      this.list[i].len= unciod(this.list[i].name)
-    }
+    init() {
+      this.list = this.context.slice(0)
+      for (let i = 0; i < this.list.length; i++) {
+        this.list[i].len = unciod(this.list[i].name)
+      }
     },
     handleClick(index) {
       this.swipIndex = index
       this.temporaryIndex = index
       this.swipBtn(this.swipIndex)
-      this.$emit('handleClick',this.list[index].value)
+      this.$emit('handleClick', this.list[index].value)
     },
-      swipBtn(index) {
-      var list=this.list.slice(0,index)
+    swipBtn(index) {
+      var list = this.list.slice(0, index)
       this.swipIndex = index
       let len = 0
-      list.forEach(item=>{
+      list.forEach((item) => {
         len = len + item.len
       })
-      this.handleBtn=len
-      this.$emit('handleMouseEnter',this.list[index].value)
+      this.handleBtn = len
+      this.$emit('handleMouseEnter', this.list[index].value)
     },
   },
 }
@@ -77,9 +92,9 @@ export default {
 
 <style lang="less" scoped>
 .context-text-tab {
-  height: 34px;
   .context-text-swip {
-    height: 100%;
+    height: 34px;
+
     position: relative;
     background: rgba(0, 0, 0, 0.1);
     border-radius: 50px;

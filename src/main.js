@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-// import store  from './store'
+import store from './store'
 import '/css/ALI_icon.css'
+import api from '@/api/index'
+
+// import '@/mock/index.js'
+
 import {
   Select,
   RadioGroup,
@@ -43,11 +47,12 @@ Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
 Vue.prototype.$utils = utils
 
+Vue.prototype.$api = api
 
 new Vue({
   render: (h) => h(App),
   router,
-  // store,
+  store,
   beforeCreate() {
     Vue.prototype.$bus = this
   },

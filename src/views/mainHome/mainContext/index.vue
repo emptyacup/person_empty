@@ -11,8 +11,8 @@
         <a @click="fillForm">填写表单</a>
       </div>
     </div> -->
-    <div class="context-header-item" id="item-1">
-      <div class="context-header-text">
+    <div class="context-header-item" id="progress">
+      <div class="context-header-text" @click="addProgress">
         <i class="bx bx-paper-plane bx-sm"></i>
         <h4>持续进步</h4>
       </div>
@@ -31,231 +31,72 @@
         </li>
       </ul>
     </div>
-    <div class="context-main-item" id="item-2">
-      <div class="context-main-text">
-        <i class="bx bx-fingerprint bx-sm"></i>
-        <h4>空杯原创</h4>
-      </div>
-
-      <titleSwip :context="productionTitle" />
-      <ul class="context-main-item-items">
-        <li
-          v-for="item in production"
-          :key="item.id"
-          class="context-main-item-item media-item2"
-        >
-          <a  @click="handleImgSHow(item.weblink)" class="context-main-img"
-            ><img :src="item.weblink" :alt="item.name"
-          /></a>
-          <div class="context-main-item-text">
-            <a :href="item.link" target="_blank" class="main-item-text-able"
-              ><p>{{ item.name }}</p></a
-            >
-            <p class="data">{{ item.data }}</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="context-main-item" id="item-3">
-      <div class="context-main-text">
-        <i class="bx bx-share-alt bx-sm"></i>
-        <h4>空杯分享</h4>
-      </div>
-      <titleSwip :context="shareTitle" />
-      <ul class="context-main-item-items">
-        <li
-          v-for="item in share"
-          :key="item.id"
-          class="context-main-item-item media-item2"
-        >
-          <a :href="item.weblink" target="_blank" class="context-main-img"
-            ><img :src="item.weblink" :alt="item.name"
-          /></a>
-          <div class="context-main-item-text">
-            <a :href="item.link" target="_blank" class="main-item-text-able"
-              ><p>{{ item.name }}</p></a
-            >
-            <p class="data">{{ item.data }}</p>
-          </div>
-        </li>
-      </ul>
-    </div>
+    <productCard
+      :title="productionTitle"
+      :list="product"
+      name="空杯原创"
+      type="product"
+      @handleImgSHow="handleImgSHow"
+      @handleClick="titleClick($event, 'product')"
+    ></productCard>
+    <productCard
+      :title="shareTitle"
+      :list="share"
+      name="空杯分享"
+      type="share"
+      @handleClick="titleClick($event, 'share')"
+    ></productCard>
     <showPageImg v-model="dialogVisible" :url="dialogImageUrl" />
-
   </div>
 </template>
 
 <script>
 import showPageImg from '@/components/showPageImg/index.vue'
-import titleSwip from '@/basicComponents/titleSwip'
+import productCard from './productCard.vue'
 export default {
   name: 'mainContext',
   props: {},
-  components: { titleSwip,showPageImg },
+  components: { showPageImg, productCard },
   data() {
     return {
-      dialogVisible:false,
-      dialogImageUrl:null,
-      progress: [
+      dialogVisible: false,
+      dialogImageUrl: null,
+      progress: [],
+      productionTitle: [
         {
-          url: 'https://github.com/emptyacup',
-          id: '430',
-          name: '空杯个人社区',
-          img: 'https://avatars.githubusercontent.com/u/104680632?v=4',
-          title: '一个github个人社区',
-          data: 'GitHub社区',
+          name: '产品版面',
+          value: 1,
         },
         {
-          url: 'https://emptyacup.GitHub.io',
-          id: '870',
-          name: '空杯的个人主页',
-          img: process.env.VUE_APP_BACK_URL+'/webtent/猫与鱼.png',
-          title: '（开发中）期待ing-',
-          data: '（开发中）期待ing-',
-        },
-        {
-          url: 'https://space.bilibili.com/76799667?spm_id_from=333.1007.0.0',
-          id: '432',
-          name: '空杯的B站',
-          img: process.env.VUE_APP_BACK_URL+'/webtent/20211201202710227.png',
-          title: '闲来没事',
-          data: '闲来没事',
-        },
-        {
-          url: 'https://weread.qq.com',
-          id: '433',
-          name: '微信读书',
-          img: process.env.VUE_APP_BACK_URL+'/webtent/8856b84a37f46a963b08569a9f7aa425.png',
-          title: '四处看看',
-          data: '腾讯笔下的良心网站',
-        },
-        {
-          url: 'https://space.bilibili.com/38377165/?spm_id_from=333.999.0.0',
-          id: '434',
-          name: '白雁同学的bilibili日常',
-          img: process.env.VUE_APP_BACK_URL+'/webtent/白银同学.jpg',
-          title: '一个立志于up主的小青年',
-          data: '一个立志于up主的小青年',
-        },
-        {
-          url: 'http://www.songcuture.top',
-          id: '435',
-          name: '宋韵文化科普网页',
-          img: process.env.VUE_APP_BACK_URL+'/webtent/soncuture.png',
-          title: '一个基于宋韵文化的科普作品',
-          data: '一个基于宋韵文化的科普作品',
+          name: '前端内容',
+          value: 2,
         },
       ],
-      productionTitle: [{
-        name:'产品版面',
-        value:1
-        },
-         {
-          name:'不知道放什么',
-          value:2
-          }],
-      production: [
-        {
-          weblink: process.env.VUE_APP_BACK_URL+'/productLayout/盆栽办公椅.jpg',
-          id: '010',
-          name: 'POTTED-chair',
-          data: '一款绿色的办公椅',
-          scale: '5x7',
-        },
-        {
-          weblink: process.env.VUE_APP_BACK_URL+'/productLayout/icemaker版面.jpg',
-          id: '011',
-          name: 'ICEMAKDER',
-          data: '夏日便携式制冰机',
-          scale: '5x7',
-        },
-        {
-          weblink: process.env.VUE_APP_BACK_URL+'/productLayout/省赛版面2(2).jpg',
-          id: '012',
-          name: 'ICEMAKDER_mini',
-          data: '夏日便携式制冰机',
-          scale: '5x2',
-        },
-        {
-          weblink: process.env.VUE_APP_BACK_URL+'/productLayout/头盔2.0.jpg',
-          id: '013',
-          name: 'MULTI-SCENE helmet',
-          data: '多场景智能扫码头盔',
-          scale: '5x7',
-        },
-        {
-          weblink: process.env.VUE_APP_BACK_URL+'/productLayout/横板头盔3.0.jpg',
-          id: '014',
-          name: 'EPIDMIC-hemmet',
-          data: '疫情应急检测头盔',
-          scale: '5x2',
-        },
-        {
-          weblink: process.env.VUE_APP_BACK_URL+'/productLayout/版面(3).jpg',
-          id: '015',
-          name: 'PANICNIG-fan',
-          data: '“我好方”便携式小型风扇',
-          scale: '5x2',
-        },
-        {
-          weblink: process.env.VUE_APP_BACK_URL+'/productLayout/窗花窗花扇.jpg',
-          id: '016',
-          name: 'FLOWER-fan',
-          data: '一款与剪纸相结合的手握式风扇',
-          scale: '5x2',
-        },
-        {
-          weblink: process.env.VUE_APP_BACK_URL+'/productLayout/双风扇.jpg',
-          id: '018',
-          name: 'SHOULDER-fan',
-          data: '多功能可穿戴式小型风扇',
-          scale: '5x2',
-        },
-        {
-          weblink: process.env.VUE_APP_BACK_URL+'/productLayout/qier.jpg',
-          id: '019',
-          name: 'PENGUIN-cup',
-          data: '有关于企鹅主题的保温杯壶',
-          scale: '5x2',
-        },
-      ],
+      product: [],
       // shareTitle: ['分享书籍你好啊00', '分享链接000'],
-      shareTitle: [{
-        name:'分享书籍你好啊00',
-        value:'1'
-        },
-         {
-          name:'不知道放什么',
-          value:'2'
-          },
-         {
-          name:'不知道放什么',
-          value:'3'
-          },
-          ],
-      share: [
+      shareTitle: [
         {
-          weblink:
-            'https://wfqqreader-1252317822.image.myqcloud.com/cover/812/855812/t6_855812.jpg',
-          id: '01',
-          name: '人类简史：从动物到上帝',
-          data: '讲述了人类的发展史，想法很新颖',
-          scale: '5x7',
+          name: '分享书籍',
+          value: '1',
         },
         {
-          weblink: 'https://res.weread.qq.com/extcover/600920657',
-          id: '02',
-          name: '天谴行动',
-          data: '一位以色列特工的真实经历',
-          scale: '5x7',
+          name: '不知道放什么',
+          value: '2',
+        },
+        {
+          name: '不知道放什么',
+          value: '3',
         },
       ],
+      share: [],
       isSun: true,
     }
   },
-  mounted() {
+  async mounted() {
     this.$bus.$on('cSun', this.changeSun)
-    console.log(process.env);
+    await this.getProduction('progress', 1)
+    await this.getProduction('product', 1)
+    await this.getProduction('share', 1)
   },
   methods: {
     changeSun(sun) {
@@ -283,10 +124,39 @@ export default {
       })
     },
     // 图片展示
-    handleImgSHow(url){
+    handleImgSHow(url) {
       this.dialogImageUrl = url
-      this.dialogVisible=true
-    }
+      this.dialogVisible = true
+    },
+    // 传送数据
+    addProgress() {
+      let obj = {}
+      obj.productionList = this.share
+      this.$api.production.addProgress(obj)
+    },
+    // 尝试单个数据
+    getProgress() {
+      let obj = {}
+      obj.productions = this.progress[0]
+      this.$api.production.progressGet(obj)
+    },
+    // 获得数据
+    async getProduction(type, page) {
+      let obj = {}
+      obj.type = type
+      obj.page = page
+      const res = await this.$api.production.getProduction(obj)
+      if (!res || !res.length) {
+        this[type].splice(0)
+      } else {
+        this[type] = res
+      }
+      // console.log(res2)
+    },
+    // 点击标题
+    async titleClick(val, type) {
+      await this.getProduction(type, val)
+    },
   },
 }
 </script>
@@ -546,7 +416,7 @@ export default {
   }
 }
 @media screen and (min-width: 1400px) {
-  .main-context .work-item{
+  .main-context .work-item {
     display: block;
   }
   .context-header-item-items {

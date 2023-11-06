@@ -11,10 +11,11 @@
 </template>
 // hover
 <script>
-import mainAside from '@/components/mainAside.vue'
+import mainAside from '@/components/mainAside'
 import mainHeader from '@/components/mainHeader.vue'
 // import mainHome from "./views/mainHome.vue";
 import fixFoote from '@/components/fixFoote.vue'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'App',
@@ -25,11 +26,23 @@ export default {
       isClose: 'main-close',
     }
   },
+  async created() {
+    var token = await this.$store.state.token
+    if (!token) {
+      let obj = {}
+      obj.username = 'hello'
+      obj.password = '123456'
+      const res = await this.$api.user.login(obj)
+      this.setToken(res.data.token)
+      window.localStorage.setItem('SESSIONKEY', res.data.token)
+    }
+  },
   mounted() {
     this.$bus.$on('cSun', this.changeSun)
     this.$bus.$on('cClose', this.changeClose)
   },
   methods: {
+    ...mapMutations(['setToken']),
     changeSun(sun) {
       sun ? (this.isDark = '') : (this.isDark = 'dark')
     },
